@@ -50,7 +50,7 @@ class QuestionsSummary extends StatelessWidget {
                           ),
                         ),
                         SizedBox(height: 5),
-                        if (data['correct_answer'] == data['user_answer'])
+                        if (data['correct_answer'] != data['user_answer'])
                           Text(
                             data['correct_answer'] as String,
                             style: GoogleFonts.lato(
@@ -63,7 +63,9 @@ class QuestionsSummary extends StatelessWidget {
                         Text(
                           data['user_answer'] as String,
                           style: GoogleFonts.lato(
-                            color: Colors.red,
+                            color: data['correct_answer'] == data['user_answer']
+                                ? Colors.green
+                                : Colors.red,
                             fontSize: 12,
                             fontWeight: FontWeight.bold,
                           ),
